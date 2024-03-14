@@ -1,0 +1,8 @@
+auth0:
+  audience:  https://stageAvenir.dti.crosemont
+spring:
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: https://dev-ynw5bzg1ok2z7h0i.us.auth0.com/

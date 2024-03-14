@@ -1,0 +1,2084 @@
+{
+	"info": {
+		"_postman_id": "02e2e54f-c91c-4467-94ad-5e530635ffb9",
+		"name": "StageAvenirAPI",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "31792813"
+	},
+	"item": [
+		{
+			"name": "Documents",
+			"item": [
+				{
+					"name": "Récuperer tous les documents",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/documents",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"documents"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Récuperer les documents par candidatures",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "oauth2",
+							"oauth2": [
+								{
+									"key": "tokenName",
+									"value": "Alicia",
+									"type": "string"
+								},
+								{
+									"key": "grant_type",
+									"value": "password_credentials",
+									"type": "string"
+								},
+								{
+									"key": "addTokenTo",
+									"value": "header",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"idCandidature\": 1,\r\n  \"etat\": \"EN_COURS\",\r\n  \"commentaire\": \"Candidature en attente de traitement\",\r\n  \"offre\": null,\r\n  \"etudiant\": null,\r\n  \"documents\": [\r\n       {\r\n        \"idDocument\": 1,\r\n        \"nom\": \"Document1\",\r\n        \"type\": \"CV\",\r\n        \"contenu\": \"Contenu1\",\r\n        \"etudiant\": null,\r\n        \"demande\": null,\r\n        \"candidature\": null\r\n      },\r\n      {\r\n        \"idDocument\": 2,\r\n        \"nom\": \"Document2\",\r\n        \"type\": \"SUPPLEMENT\",\r\n        \"contenu\": \"Contenu2\",\r\n        \"etudiant\": null,\r\n        \"demande\": null,\r\n        \"candidature\": null\r\n      }\r\n  ]\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/employeur/offresStage/1/candidatures/1/documents",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"employeur",
+								"offresStage",
+								"1",
+								"candidatures",
+								"1",
+								"documents"
+							]
+						},
+						"description": "Postuler pour une offre "
+					},
+					"response": []
+				},
+				{
+					"name": "récupérer documents par demande de stage",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/etudiant/demandesStages/1/documents",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"etudiant",
+								"demandesStages",
+								"1",
+								"documents"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Enregistrer un CV",
+					"request": {
+						"auth": {
+							"type": "oauth2",
+							"oauth2": [
+								{
+									"key": "tokenName",
+									"value": "Alicia",
+									"type": "string"
+								},
+								{
+									"key": "grant_type",
+									"value": "password_credentials",
+									"type": "string"
+								},
+								{
+									"key": "addTokenTo",
+									"value": "header",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"idDocument\": 1,\r\n  \"nom\": \"ExempleDocument2\",\r\n  \"type\": \"CV\",\r\n  \"contenu\": \"SGVsbG8gd29ybGQ=\",\r\n  \"etudiant\": null,\r\n  \"demande\": null,\r\n  \"candidature\": null\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/etudiant/profil/cv",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"etudiant",
+								"profil",
+								"cv"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Modifier un CV",
+					"request": {
+						"auth": {
+							"type": "oauth2",
+							"oauth2": [
+								{
+									"key": "tokenName",
+									"value": "Alicia",
+									"type": "string"
+								},
+								{
+									"key": "grant_type",
+									"value": "password_credentials",
+									"type": "string"
+								},
+								{
+									"key": "addTokenTo",
+									"value": "header",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"idDocument\": 3,\r\n  \"nom\": \"ExempleDocument 3e version\",\r\n  \"type\": \"CV\",\r\n  \"contenu\": \"SGVsbG8gd29ybGQ=\",\r\n  \"etudiant\": null,\r\n  \"demande\": null,\r\n  \"candidature\": null\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/etudiant/profil/cv",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"etudiant",
+								"profil",
+								"cv"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Candidatures",
+			"item": [
+				{
+					"name": "Poster Candidature",
+					"request": {
+						"auth": {
+							"type": "oauth2",
+							"oauth2": [
+								{
+									"key": "tokenName",
+									"value": "Alicia",
+									"type": "string"
+								},
+								{
+									"key": "grant_type",
+									"value": "password_credentials",
+									"type": "string"
+								},
+								{
+									"key": "addTokenTo",
+									"value": "header",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"idCandidature\": 1,\r\n  \"etat\": \"EN_COURS\",\r\n  \"commentaire\": \"Candidature en attente de traitement\",\r\n  \"offre\": null,\r\n  \"etudiant\": null,\r\n  \"documents\": [\r\n       {\r\n        \"idDocument\": 1,\r\n        \"nom\": \"Document1\",\r\n        \"type\": \"CV\",\r\n        \"contenu\": \"Contenu1\",\r\n        \"etudiant\": null,\r\n        \"demande\": null,\r\n        \"candidature\": null\r\n      },\r\n      {\r\n        \"idDocument\": 2,\r\n        \"nom\": \"Document2\",\r\n        \"type\": \"SUPPLEMENT\",\r\n        \"contenu\": \"Contenu2\",\r\n        \"etudiant\": null,\r\n        \"demande\": null,\r\n        \"candidature\": null\r\n      }\r\n  ]\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/etudiant/offresStages/2/candidature",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"etudiant",
+								"offresStages",
+								"2",
+								"candidature"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Obtenir Candidatures par offre de stage ",
+					"request": {
+						"auth": {
+							"type": "oauth2",
+							"oauth2": [
+								{
+									"key": "accessTokenUrl",
+									"value": "https://dev-ynw5bzg1ok2z7h0i.us.auth0.com/oauth/token",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "sahctropQuejech4ng3",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "toufikbellal@crosemont.qc.ca",
+									"type": "string"
+								},
+								{
+									"key": "clientSecret",
+									"value": "Zsmd4lYcIP1dMA9J4ZSsE_j5mjhnetc0QasvXWFsd7NrZ2EMPo4DpFs17ws3ZEYb",
+									"type": "string"
+								},
+								{
+									"key": "clientId",
+									"value": "w0tgajZnpW85GnjJsyNr87UqIN5AR77b",
+									"type": "string"
+								},
+								{
+									"key": "tokenRequestParams",
+									"value": [
+										{
+											"key": "audience",
+											"value": "https://stageAvenir.dti.crosemont",
+											"enabled": true,
+											"send_as": "request_body"
+										}
+									],
+									"type": "any"
+								},
+								{
+									"key": "tokenName",
+									"value": "Toufik2",
+									"type": "string"
+								},
+								{
+									"key": "grant_type",
+									"value": "password_credentials",
+									"type": "string"
+								},
+								{
+									"key": "addTokenTo",
+									"value": "header",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/employeur/offresStages/2/candidatures",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"employeur",
+								"offresStages",
+								"2",
+								"candidatures"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Obtenir Candidatures par étudiants",
+					"request": {
+						"auth": {
+							"type": "oauth2",
+							"oauth2": [
+								{
+									"key": "tokenName",
+									"value": "Alicia",
+									"type": "string"
+								},
+								{
+									"key": "grant_type",
+									"value": "password_credentials",
+									"type": "string"
+								},
+								{
+									"key": "addTokenTo",
+									"value": "header",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/etudiant/candidatures",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"etudiant",
+								"candidatures"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "annuler Candidature",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"idCandidature\": 1,\r\n  \"etat\": \"EN_COURS\",\r\n  \"commentaire\": \"Candidature en attente de traitement\",\r\n  \"offre\": null,\r\n  \"etudiant\": null,\r\n  \"documents\": [\r\n       {\r\n        \"idDocument\": 1,\r\n        \"nom\": \"Document1\",\r\n        \"type\": \"CV\",\r\n        \"contenu\": \"Contenu1\",\r\n        \"etudiant\": null,\r\n        \"demande\": null,\r\n        \"candidature\": null\r\n      },\r\n      {\r\n        \"idDocument\": 2,\r\n        \"nom\": \"Document2\",\r\n        \"type\": \"SUPPLEMENT\",\r\n        \"contenu\": \"Contenu2\",\r\n        \"etudiant\": null,\r\n        \"demande\": null,\r\n        \"candidature\": null\r\n      }\r\n  ]\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/etudiant/1/candidatures/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"etudiant",
+								"1",
+								"candidatures",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Accepter candidature",
+					"request": {
+						"auth": {
+							"type": "oauth2",
+							"oauth2": [
+								{
+									"key": "tokenName",
+									"value": "Alicia",
+									"type": "string"
+								},
+								{
+									"key": "grant_type",
+									"value": "password_credentials",
+									"type": "string"
+								},
+								{
+									"key": "addTokenTo",
+									"value": "header",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/employeur/offresStages/2/candidatures/4/accepter",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"employeur",
+								"offresStages",
+								"2",
+								"candidatures",
+								"4",
+								"accepter"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Refuser une candidature",
+					"request": {
+						"auth": {
+							"type": "oauth2",
+							"oauth2": [
+								{
+									"key": "tokenName",
+									"value": "Alicia",
+									"type": "string"
+								},
+								{
+									"key": "grant_type",
+									"value": "password_credentials",
+									"type": "string"
+								},
+								{
+									"key": "addTokenTo",
+									"value": "header",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/employeur/offresStages/Offre/candidatures/4/refuser",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"employeur",
+								"offresStages",
+								"Offre",
+								"candidatures",
+								"4",
+								"refuser"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Offres de Stages",
+			"item": [
+				{
+					"name": "Obtenir toutes les offres de stages ",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "oauth2",
+							"oauth2": [
+								{
+									"key": "tokenRequestParams",
+									"value": [
+										{
+											"key": "audience",
+											"value": "https://stageAvenir.dti.crosemont",
+											"enabled": true,
+											"send_as": "request_body"
+										}
+									],
+									"type": "any"
+								},
+								{
+									"key": "password",
+									"value": "sahctropQuejech4ng3",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "johndoe@dti.ca",
+									"type": "string"
+								},
+								{
+									"key": "clientSecret",
+									"value": "Zsmd4lYcIP1dMA9J4ZSsE_j5mjhnetc0QasvXWFsd7NrZ2EMPo4DpFs17ws3ZEYb",
+									"type": "string"
+								},
+								{
+									"key": "clientId",
+									"value": "w0tgajZnpW85GnjJsyNr87UqIN5AR77b",
+									"type": "string"
+								},
+								{
+									"key": "accessTokenUrl",
+									"value": "https://dev-ynw5bzg1ok2z7h0i.us.auth0.com/oauth/token",
+									"type": "string"
+								},
+								{
+									"key": "grant_type",
+									"value": "password_credentials",
+									"type": "string"
+								},
+								{
+									"key": "tokenName",
+									"value": "Otto",
+									"type": "string"
+								},
+								{
+									"key": "addTokenTo",
+									"value": "header",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/offres_Stages",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"offres_Stages"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Obtenir offre par code",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/offres_Stages/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"offres_Stages",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Obtenir offre par catégorie",
+					"request": {
+						"auth": {
+							"type": "oauth2",
+							"oauth2": [
+								{
+									"key": "accessTokenUrl",
+									"value": "https://dev-ynw5bzg1ok2z7h0i.us.auth0.com/oauth/token",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "sahctropQuejech4ng3",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "toufikbellal@crosemont.qc.ca",
+									"type": "string"
+								},
+								{
+									"key": "clientSecret",
+									"value": "Zsmd4lYcIP1dMA9J4ZSsE_j5mjhnetc0QasvXWFsd7NrZ2EMPo4DpFs17ws3ZEYb",
+									"type": "string"
+								},
+								{
+									"key": "clientId",
+									"value": "w0tgajZnpW85GnjJsyNr87UqIN5AR77b",
+									"type": "string"
+								},
+								{
+									"key": "tokenRequestParams",
+									"value": [
+										{
+											"key": "audience",
+											"value": "https://stageAvenir.dti.crosemont",
+											"enabled": true,
+											"send_as": "request_body"
+										}
+									],
+									"type": "any"
+								},
+								{
+									"key": "tokenName",
+									"value": "Toufik2",
+									"type": "string"
+								},
+								{
+									"key": "grant_type",
+									"value": "password_credentials",
+									"type": "string"
+								},
+								{
+									"key": "addTokenTo",
+									"value": "header",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/etudiant/offres_Stages",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"etudiant",
+								"offres_Stages"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Obtenir demande de publication",
+					"request": {
+						"auth": {
+							"type": "oauth2",
+							"oauth2": [
+								{
+									"key": "accessTokenUrl",
+									"value": "https://dev-ynw5bzg1ok2z7h0i.us.auth0.com/oauth/token",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "sahctropQuejech4ng3",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "toufikbellal@crosemont.qc.ca",
+									"type": "string"
+								},
+								{
+									"key": "clientSecret",
+									"value": "Zsmd4lYcIP1dMA9J4ZSsE_j5mjhnetc0QasvXWFsd7NrZ2EMPo4DpFs17ws3ZEYb",
+									"type": "string"
+								},
+								{
+									"key": "clientId",
+									"value": "w0tgajZnpW85GnjJsyNr87UqIN5AR77b",
+									"type": "string"
+								},
+								{
+									"key": "tokenRequestParams",
+									"value": [
+										{
+											"key": "audience",
+											"value": "https://stageAvenir.dti.crosemont",
+											"enabled": true,
+											"send_as": "request_body"
+										}
+									],
+									"type": "any"
+								},
+								{
+									"key": "tokenName",
+									"value": "Toufik2",
+									"type": "string"
+								},
+								{
+									"key": "grant_type",
+									"value": "password_credentials",
+									"type": "string"
+								},
+								{
+									"key": "addTokenTo",
+									"value": "header",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/coordonateur/demandesPublication",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"coordonateur",
+								"demandesPublication"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Accepter une demande de publication",
+					"request": {
+						"auth": {
+							"type": "oauth2",
+							"oauth2": [
+								{
+									"key": "tokenName",
+									"value": "",
+									"type": "string"
+								},
+								{
+									"key": "grant_type",
+									"value": "password_credentials",
+									"type": "string"
+								},
+								{
+									"key": "addTokenTo",
+									"value": "header",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/coordonnateur/demandesPublication/2/accepter",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"coordonnateur",
+								"demandesPublication",
+								"2",
+								"accepter"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Demande De publication Offre de stage ",
+					"request": {
+						"auth": {
+							"type": "oauth2",
+							"oauth2": [
+								{
+									"key": "tokenRequestParams",
+									"value": [
+										{
+											"key": "audience",
+											"value": "https://stageAvenir.dti.crosemont",
+											"enabled": true,
+											"send_as": "request_body"
+										}
+									],
+									"type": "any"
+								},
+								{
+									"key": "password",
+									"value": "sahctropQuejech4ng3",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "johndoe@dti.ca",
+									"type": "string"
+								},
+								{
+									"key": "clientSecret",
+									"value": "Zsmd4lYcIP1dMA9J4ZSsE_j5mjhnetc0QasvXWFsd7NrZ2EMPo4DpFs17ws3ZEYb",
+									"type": "string"
+								},
+								{
+									"key": "clientId",
+									"value": "w0tgajZnpW85GnjJsyNr87UqIN5AR77b",
+									"type": "string"
+								},
+								{
+									"key": "accessTokenUrl",
+									"value": "https://dev-ynw5bzg1ok2z7h0i.us.auth0.com/oauth/token",
+									"type": "string"
+								},
+								{
+									"key": "grant_type",
+									"value": "password_credentials",
+									"type": "string"
+								},
+								{
+									"key": "tokenName",
+									"value": "Otto",
+									"type": "string"
+								},
+								{
+									"key": "addTokenTo",
+									"value": "header",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": " {\r\n        \"idOffreStage\": 1,\r\n        \"titreOffre\": \"Poste cherché en Java et kotlin\",\r\n        \"posteOffert\": \"Programmeur analyste 3\",\r\n        \"description\": \"Nous recherchons des programmeurs\",\r\n        \"estRémunéré\": true,\r\n        \"datePost\": \"2023-12-31\",\r\n        \"estVisible\": true,\r\n        \"etat\": \"EN_COURS\",\r\n        \"entreprise\": {\r\n            \"idEntreprise\": 1,\r\n            \"nom\": \"Tech-Logiciel\",\r\n            \"adresse\": \"629 rue d évolène\",\r\n            \"description\": \"DescriptionEntreprise\",\r\n            \"secteur\": \"logiciel\",\r\n            \"employeur\": {\r\n                \"idUtilisateur\": \"auth0|658265b0f82b42b3d4ebd08b\",\r\n                \"nom\": \"Doe\",\r\n                \"prénom\": \"John\",\r\n                \"courriel\": \"johndoe@dti.ca\",\r\n                \"no_telephone\": \"9876543210\",\r\n                \"categorie\": {\r\n                    \"idCatégorie\": 2,\r\n                    \"cursus\": \"Réseau\"\r\n                },\r\n                \"role\": {\r\n                    \"idRole\": 2,\r\n                    \"nom\": \"employeur\"\r\n                }\r\n            }\r\n        },\r\n        \"catégorie\": {\r\n            \"idCatégorie\": 1,\r\n            \"cursus\": \"Programmation\"\r\n        }\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/employeur/entreprise/2/offresStages",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"employeur",
+								"entreprise",
+								"2",
+								"offresStages"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "API controleur",
+			"item": [
+				{
+					"name": "Obtenir id user",
+					"request": {
+						"auth": {
+							"type": "oauth2",
+							"oauth2": [
+								{
+									"key": "accessTokenUrl",
+									"value": "https://dev-ynw5bzg1ok2z7h0i.us.auth0.com/oauth/token",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "sahctropQuejech4ng3",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "toufikbellal@crosemont.qc.ca",
+									"type": "string"
+								},
+								{
+									"key": "clientSecret",
+									"value": "Zsmd4lYcIP1dMA9J4ZSsE_j5mjhnetc0QasvXWFsd7NrZ2EMPo4DpFs17ws3ZEYb",
+									"type": "string"
+								},
+								{
+									"key": "clientId",
+									"value": "w0tgajZnpW85GnjJsyNr87UqIN5AR77b",
+									"type": "string"
+								},
+								{
+									"key": "tokenRequestParams",
+									"value": [
+										{
+											"key": "audience",
+											"value": "https://stageAvenir.dti.crosemont",
+											"enabled": true,
+											"send_as": "request_body"
+										}
+									],
+									"type": "any"
+								},
+								{
+									"key": "tokenName",
+									"value": "Toufik2",
+									"type": "string"
+								},
+								{
+									"key": "grant_type",
+									"value": "password_credentials",
+									"type": "string"
+								},
+								{
+									"key": "addTokenTo",
+									"value": "header",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/utilisateur",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"utilisateur"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:8080/utilisateur",
+					"request": {
+						"auth": {
+							"type": "oauth2",
+							"oauth2": [
+								{
+									"key": "tokenRequestParams",
+									"value": [
+										{
+											"key": "audience",
+											"value": "https://stageAvenir.dti.crosemont",
+											"enabled": true,
+											"send_as": "request_body"
+										}
+									],
+									"type": "any"
+								},
+								{
+									"key": "password",
+									"value": "sahctropQuejech4ng3",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "johndoe@dti.ca",
+									"type": "string"
+								},
+								{
+									"key": "clientSecret",
+									"value": "Zsmd4lYcIP1dMA9J4ZSsE_j5mjhnetc0QasvXWFsd7NrZ2EMPo4DpFs17ws3ZEYb",
+									"type": "string"
+								},
+								{
+									"key": "clientId",
+									"value": "w0tgajZnpW85GnjJsyNr87UqIN5AR77b",
+									"type": "string"
+								},
+								{
+									"key": "accessTokenUrl",
+									"value": "https://dev-ynw5bzg1ok2z7h0i.us.auth0.com/oauth/token",
+									"type": "string"
+								},
+								{
+									"key": "grant_type",
+									"value": "password_credentials",
+									"type": "string"
+								},
+								{
+									"key": "tokenName",
+									"value": "Otto",
+									"type": "string"
+								},
+								{
+									"key": "addTokenTo",
+									"value": "header",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/utilisateur",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"utilisateur"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Entreprise",
+			"item": [
+				{
+					"name": "Enregistrer une entreprise",
+					"request": {
+						"auth": {
+							"type": "oauth2",
+							"oauth2": [
+								{
+									"key": "tokenName",
+									"value": "Alicia",
+									"type": "string"
+								},
+								{
+									"key": "grant_type",
+									"value": "password_credentials",
+									"type": "string"
+								},
+								{
+									"key": "addTokenTo",
+									"value": "header",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"idEntreprise\": 1,\r\n    \"nom\": \"Nom de l'entreprise\",\r\n    \"adresse\": \"Adresse de l'entreprise\",\r\n    \"description\": \"Description de l'entreprise\",\r\n    \"secteur\": \"Secteur de l'entreprise\",\r\n    \"employeur\": null\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/employeur/entreprises",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"employeur",
+								"entreprises"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Obtenir entreprises par employeur",
+					"request": {
+						"auth": {
+							"type": "oauth2",
+							"oauth2": [
+								{
+									"key": "tokenRequestParams",
+									"value": [
+										{
+											"key": "audience",
+											"value": "https://stageAvenir.dti.crosemont",
+											"enabled": true,
+											"send_as": "request_body"
+										}
+									],
+									"type": "any"
+								},
+								{
+									"key": "password",
+									"value": "sahctropQuejech4ng3",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "johndoe@dti.ca",
+									"type": "string"
+								},
+								{
+									"key": "clientSecret",
+									"value": "Zsmd4lYcIP1dMA9J4ZSsE_j5mjhnetc0QasvXWFsd7NrZ2EMPo4DpFs17ws3ZEYb",
+									"type": "string"
+								},
+								{
+									"key": "clientId",
+									"value": "w0tgajZnpW85GnjJsyNr87UqIN5AR77b",
+									"type": "string"
+								},
+								{
+									"key": "accessTokenUrl",
+									"value": "https://dev-ynw5bzg1ok2z7h0i.us.auth0.com/oauth/token",
+									"type": "string"
+								},
+								{
+									"key": "grant_type",
+									"value": "password_credentials",
+									"type": "string"
+								},
+								{
+									"key": "tokenName",
+									"value": "Otto",
+									"type": "string"
+								},
+								{
+									"key": "addTokenTo",
+									"value": "header",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/employeur/entreprises",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"employeur",
+								"entreprises"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Présentation",
+			"item": [
+				{
+					"name": "Wissem",
+					"item": [
+						{
+							"name": "Obtenir toutes les offres de stages",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "oauth2",
+									"oauth2": [
+										{
+											"key": "username",
+											"value": "wissem.benaraiba27@gmail.com",
+											"type": "string"
+										},
+										{
+											"key": "tokenName",
+											"value": "wissem",
+											"type": "string"
+										},
+										{
+											"key": "tokenRequestParams",
+											"value": [
+												{
+													"key": "audience",
+													"value": "https://stageAvenir.dti.crosemont",
+													"enabled": true,
+													"send_as": "request_body"
+												}
+											],
+											"type": "any"
+										},
+										{
+											"key": "password",
+											"value": "sahctropQuejech4ng3",
+											"type": "string"
+										},
+										{
+											"key": "clientSecret",
+											"value": "Zsmd4lYcIP1dMA9J4ZSsE_j5mjhnetc0QasvXWFsd7NrZ2EMPo4DpFs17ws3ZEYb",
+											"type": "string"
+										},
+										{
+											"key": "clientId",
+											"value": "w0tgajZnpW85GnjJsyNr87UqIN5AR77b",
+											"type": "string"
+										},
+										{
+											"key": "accessTokenUrl",
+											"value": "https://dev-ynw5bzg1ok2z7h0i.us.auth0.com/oauth/token",
+											"type": "string"
+										},
+										{
+											"key": "grant_type",
+											"value": "password_credentials",
+											"type": "string"
+										},
+										{
+											"key": "addTokenTo",
+											"value": "header",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/etudiant/offres_Stages",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"etudiant",
+										"offres_Stages"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Obtenir offre par code",
+							"request": {
+								"auth": {
+									"type": "oauth2",
+									"oauth2": [
+										{
+											"key": "username",
+											"value": "wissem.benaraiba27@gmail.com",
+											"type": "string"
+										},
+										{
+											"key": "tokenName",
+											"value": "wissem",
+											"type": "string"
+										},
+										{
+											"key": "tokenRequestParams",
+											"value": [
+												{
+													"key": "audience",
+													"value": "https://stageAvenir.dti.crosemont",
+													"enabled": true,
+													"send_as": "request_body"
+												}
+											],
+											"type": "any"
+										},
+										{
+											"key": "password",
+											"value": "sahctropQuejech4ng3",
+											"type": "string"
+										},
+										{
+											"key": "clientSecret",
+											"value": "Zsmd4lYcIP1dMA9J4ZSsE_j5mjhnetc0QasvXWFsd7NrZ2EMPo4DpFs17ws3ZEYb",
+											"type": "string"
+										},
+										{
+											"key": "clientId",
+											"value": "w0tgajZnpW85GnjJsyNr87UqIN5AR77b",
+											"type": "string"
+										},
+										{
+											"key": "accessTokenUrl",
+											"value": "https://dev-ynw5bzg1ok2z7h0i.us.auth0.com/oauth/token",
+											"type": "string"
+										},
+										{
+											"key": "grant_type",
+											"value": "password_credentials",
+											"type": "string"
+										},
+										{
+											"key": "addTokenTo",
+											"value": "header",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/offres_Stages/2",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"offres_Stages",
+										"2"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Poster Candidature",
+							"request": {
+								"auth": {
+									"type": "oauth2",
+									"oauth2": [
+										{
+											"key": "tokenName",
+											"value": "Alicia",
+											"type": "string"
+										},
+										{
+											"key": "grant_type",
+											"value": "password_credentials",
+											"type": "string"
+										},
+										{
+											"key": "addTokenTo",
+											"value": "header",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"idCandidature\": 1,\r\n  \"etat\": \"EN_COURS\",\r\n  \"commentaire\": \"Candidature en attente de traitement\",\r\n  \"offre\": null,\r\n  \"etudiant\": null,\r\n  \"documents\": [\r\n       {\r\n        \"idDocument\": 1,\r\n        \"nom\": \"Document1\",\r\n        \"type\": \"CV\",\r\n        \"contenu\": \"Contenu1\",\r\n        \"etudiant\": null,\r\n        \"demande\": null,\r\n        \"candidature\": null\r\n      },\r\n      {\r\n        \"idDocument\": 2,\r\n        \"nom\": \"Document2\",\r\n        \"type\": \"SUPPLEMENT\",\r\n        \"contenu\": \"Contenu2\",\r\n        \"etudiant\": null,\r\n        \"demande\": null,\r\n        \"candidature\": null\r\n      }\r\n  ]\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/etudiant/offresStages/2/candidature",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"etudiant",
+										"offresStages",
+										"2",
+										"candidature"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Obtenir Candidatures par étudiants",
+							"request": {
+								"auth": {
+									"type": "oauth2",
+									"oauth2": [
+										{
+											"key": "tokenName",
+											"value": "Alicia",
+											"type": "string"
+										},
+										{
+											"key": "grant_type",
+											"value": "password_credentials",
+											"type": "string"
+										},
+										{
+											"key": "addTokenTo",
+											"value": "header",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/etudiant/candidatures",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"etudiant",
+										"candidatures"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "John",
+					"item": [
+						{
+							"name": "Enregistrer une entreprise",
+							"request": {
+								"auth": {
+									"type": "oauth2",
+									"oauth2": [
+										{
+											"key": "tokenName",
+											"value": "Alicia",
+											"type": "string"
+										},
+										{
+											"key": "grant_type",
+											"value": "password_credentials",
+											"type": "string"
+										},
+										{
+											"key": "addTokenTo",
+											"value": "header",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"idEntreprise\": 1,\r\n    \"nom\": \"Nom de l'entreprise 3\",\r\n    \"adresse\": \"Adresse de l'entreprise 3\",\r\n    \"description\": \"Description de l'entreprise\",\r\n    \"secteur\": \"Secteur de l'entreprise\",\r\n    \"employeur\": null\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/employeur/entreprises",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"employeur",
+										"entreprises"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Obtenir Entreprises par employé",
+							"request": {
+								"auth": {
+									"type": "oauth2",
+									"oauth2": [
+										{
+											"key": "tokenName",
+											"value": "",
+											"type": "string"
+										},
+										{
+											"key": "grant_type",
+											"value": "password_credentials",
+											"type": "string"
+										},
+										{
+											"key": "addTokenTo",
+											"value": "header",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/employeur/entreprises",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"employeur",
+										"entreprises"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Obtenir entreprise par code",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "oauth2",
+									"oauth2": [
+										{
+											"key": "tokenRequestParams",
+											"value": [
+												{
+													"key": "audience",
+													"value": "https://stageAvenir.dti.crosemont",
+													"enabled": true,
+													"send_as": "request_body"
+												}
+											],
+											"type": "any"
+										},
+										{
+											"key": "password",
+											"value": "sahctropQuejech4ng3",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "johndoe@dti.ca",
+											"type": "string"
+										},
+										{
+											"key": "clientSecret",
+											"value": "Zsmd4lYcIP1dMA9J4ZSsE_j5mjhnetc0QasvXWFsd7NrZ2EMPo4DpFs17ws3ZEYb",
+											"type": "string"
+										},
+										{
+											"key": "clientId",
+											"value": "w0tgajZnpW85GnjJsyNr87UqIN5AR77b",
+											"type": "string"
+										},
+										{
+											"key": "accessTokenUrl",
+											"value": "https://dev-ynw5bzg1ok2z7h0i.us.auth0.com/oauth/token",
+											"type": "string"
+										},
+										{
+											"key": "grant_type",
+											"value": "password_credentials",
+											"type": "string"
+										},
+										{
+											"key": "tokenName",
+											"value": "Otto",
+											"type": "string"
+										},
+										{
+											"key": "addTokenTo",
+											"value": "header",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/employeur/entreprises/2",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"employeur",
+										"entreprises",
+										"2"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Demande De publication Offre de stage",
+							"request": {
+								"auth": {
+									"type": "oauth2",
+									"oauth2": [
+										{
+											"key": "tokenRequestParams",
+											"value": [
+												{
+													"key": "audience",
+													"value": "https://stageAvenir.dti.crosemont",
+													"enabled": true,
+													"send_as": "request_body"
+												}
+											],
+											"type": "any"
+										},
+										{
+											"key": "password",
+											"value": "sahctropQuejech4ng3",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "johndoe@dti.ca",
+											"type": "string"
+										},
+										{
+											"key": "clientSecret",
+											"value": "Zsmd4lYcIP1dMA9J4ZSsE_j5mjhnetc0QasvXWFsd7NrZ2EMPo4DpFs17ws3ZEYb",
+											"type": "string"
+										},
+										{
+											"key": "clientId",
+											"value": "w0tgajZnpW85GnjJsyNr87UqIN5AR77b",
+											"type": "string"
+										},
+										{
+											"key": "accessTokenUrl",
+											"value": "https://dev-ynw5bzg1ok2z7h0i.us.auth0.com/oauth/token",
+											"type": "string"
+										},
+										{
+											"key": "grant_type",
+											"value": "password_credentials",
+											"type": "string"
+										},
+										{
+											"key": "tokenName",
+											"value": "Otto",
+											"type": "string"
+										},
+										{
+											"key": "addTokenTo",
+											"value": "header",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": " {\r\n        \"idOffreStage\": 1,\r\n        \"titreOffre\": \"Poste cherché en Java et kotlin\",\r\n        \"posteOffert\": \"Programmeur analyste 3\",\r\n        \"description\": \"Nous recherchons des programmeurs\",\r\n        \"estRémunéré\": true,\r\n        \"datePost\": \"2023-12-31\",\r\n        \"estVisible\": true,\r\n        \"etat\": \"EN_COURS\",\r\n        \"entreprise\": {\r\n            \"idEntreprise\": 1,\r\n            \"nom\": \"Tech-Logiciel\",\r\n            \"adresse\": \"629 rue d évolène\",\r\n            \"description\": \"DescriptionEntreprise\",\r\n            \"secteur\": \"logiciel\",\r\n            \"employeur\": {\r\n                \"idUtilisateur\": \"auth0|658265b0f82b42b3d4ebd08b\",\r\n                \"nom\": \"Doe\",\r\n                \"prénom\": \"John\",\r\n                \"courriel\": \"johndoe@dti.ca\",\r\n                \"no_telephone\": \"9876543210\",\r\n                \"categorie\": {\r\n                    \"idCatégorie\": 2,\r\n                    \"cursus\": \"Réseau\"\r\n                },\r\n                \"role\": {\r\n                    \"idRole\": 2,\r\n                    \"nom\": \"employeur\"\r\n                }\r\n            }\r\n        },\r\n        \"catégorie\": {\r\n            \"idCatégorie\": 1,\r\n            \"cursus\": \"Programmation\"\r\n        }\r\n    }",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/employeur/entreprise/2/offresStages",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"employeur",
+										"entreprise",
+										"2",
+										"offresStages"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Obtenir Candidatures par offre de stage",
+							"request": {
+								"auth": {
+									"type": "oauth2",
+									"oauth2": [
+										{
+											"key": "accessTokenUrl",
+											"value": "https://dev-ynw5bzg1ok2z7h0i.us.auth0.com/oauth/token",
+											"type": "string"
+										},
+										{
+											"key": "password",
+											"value": "sahctropQuejech4ng3",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "toufikbellal@crosemont.qc.ca",
+											"type": "string"
+										},
+										{
+											"key": "clientSecret",
+											"value": "Zsmd4lYcIP1dMA9J4ZSsE_j5mjhnetc0QasvXWFsd7NrZ2EMPo4DpFs17ws3ZEYb",
+											"type": "string"
+										},
+										{
+											"key": "clientId",
+											"value": "w0tgajZnpW85GnjJsyNr87UqIN5AR77b",
+											"type": "string"
+										},
+										{
+											"key": "tokenRequestParams",
+											"value": [
+												{
+													"key": "audience",
+													"value": "https://stageAvenir.dti.crosemont",
+													"enabled": true,
+													"send_as": "request_body"
+												}
+											],
+											"type": "any"
+										},
+										{
+											"key": "tokenName",
+											"value": "Toufik2",
+											"type": "string"
+										},
+										{
+											"key": "grant_type",
+											"value": "password_credentials",
+											"type": "string"
+										},
+										{
+											"key": "addTokenTo",
+											"value": "header",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/employeur/offresStages/2/candidatures",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"employeur",
+										"offresStages",
+										"2",
+										"candidatures"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Refuser une candidature",
+							"request": {
+								"auth": {
+									"type": "oauth2",
+									"oauth2": [
+										{
+											"key": "tokenName",
+											"value": "Alicia",
+											"type": "string"
+										},
+										{
+											"key": "grant_type",
+											"value": "password_credentials",
+											"type": "string"
+										},
+										{
+											"key": "addTokenTo",
+											"value": "header",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/employeur/offresStages/Offre/candidatures/4/refuser",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"employeur",
+										"offresStages",
+										"Offre",
+										"candidatures",
+										"4",
+										"refuser"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Toufik",
+					"item": [
+						{
+							"name": "Obtenir demande de publication",
+							"request": {
+								"auth": {
+									"type": "oauth2",
+									"oauth2": [
+										{
+											"key": "accessTokenUrl",
+											"value": "https://dev-ynw5bzg1ok2z7h0i.us.auth0.com/oauth/token",
+											"type": "string"
+										},
+										{
+											"key": "password",
+											"value": "sahctropQuejech4ng3",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "toufikbellal@crosemont.qc.ca",
+											"type": "string"
+										},
+										{
+											"key": "clientSecret",
+											"value": "Zsmd4lYcIP1dMA9J4ZSsE_j5mjhnetc0QasvXWFsd7NrZ2EMPo4DpFs17ws3ZEYb",
+											"type": "string"
+										},
+										{
+											"key": "clientId",
+											"value": "w0tgajZnpW85GnjJsyNr87UqIN5AR77b",
+											"type": "string"
+										},
+										{
+											"key": "tokenRequestParams",
+											"value": [
+												{
+													"key": "audience",
+													"value": "https://stageAvenir.dti.crosemont",
+													"enabled": true,
+													"send_as": "request_body"
+												}
+											],
+											"type": "any"
+										},
+										{
+											"key": "tokenName",
+											"value": "Toufik2",
+											"type": "string"
+										},
+										{
+											"key": "grant_type",
+											"value": "password_credentials",
+											"type": "string"
+										},
+										{
+											"key": "addTokenTo",
+											"value": "header",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/coordonateur/demandesPublication",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"coordonateur",
+										"demandesPublication"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Accepter une demande de publication",
+							"request": {
+								"auth": {
+									"type": "oauth2",
+									"oauth2": [
+										{
+											"key": "tokenName",
+											"value": "Alicia",
+											"type": "string"
+										},
+										{
+											"key": "grant_type",
+											"value": "password_credentials",
+											"type": "string"
+										},
+										{
+											"key": "addTokenTo",
+											"value": "header",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/coordonnateur/demandesPublication/4/accepter",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"coordonnateur",
+										"demandesPublication",
+										"4",
+										"accepter"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "oauth2",
+		"oauth2": [
+			{
+				"key": "password",
+				"value": "sahctropQuejech4ng3",
+				"type": "string"
+			},
+			{
+				"key": "username",
+				"value": "wissem.benaraiba27@gmail.com",
+				"type": "string"
+			},
+			{
+				"key": "tokenName",
+				"value": "Wissem",
+				"type": "string"
+			},
+			{
+				"key": "grant_type",
+				"value": "password_credentials",
+				"type": "string"
+			},
+			{
+				"key": "accessTokenUrl",
+				"value": "https://dev-ynw5bzg1ok2z7h0i.us.auth0.com/oauth/token",
+				"type": "string"
+			},
+			{
+				"key": "tokenRequestParams",
+				"value": [
+					{
+						"key": "audience",
+						"value": "https://stageAvenir.dti.crosemont",
+						"enabled": true,
+						"send_as": "request_body"
+					}
+				],
+				"type": "any"
+			},
+			{
+				"key": "clientSecret",
+				"value": "Zsmd4lYcIP1dMA9J4ZSsE_j5mjhnetc0QasvXWFsd7NrZ2EMPo4DpFs17ws3ZEYb",
+				"type": "string"
+			},
+			{
+				"key": "clientId",
+				"value": "w0tgajZnpW85GnjJsyNr87UqIN5AR77b",
+				"type": "string"
+			},
+			{
+				"key": "refreshRequestParams",
+				"value": [],
+				"type": "any"
+			},
+			{
+				"key": "authRequestParams",
+				"value": [],
+				"type": "any"
+			},
+			{
+				"key": "challengeAlgorithm",
+				"value": "S256",
+				"type": "string"
+			},
+			{
+				"key": "addTokenTo",
+				"value": "header",
+				"type": "string"
+			},
+			{
+				"key": "client_authentication",
+				"value": "header",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
